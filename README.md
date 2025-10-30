@@ -51,14 +51,4 @@ Landing page minimalis, modern, dan bersih untuk Toko Aldi Sembako di Banguntapa
    - Source: `main`
    - Folder: `/` (root)
 3. (Opsional) Tambahkan `.nojekyll` untuk menonaktifkan Jekyll
-4. Akses situs: `https://<username>.github.io/toko-aldi-sembako-landing/`
-
-## 📞 Kontak Toko Aldi Sembako
-
-- Telepon / WhatsApp: [0812-3397-4201](https://wa.me/6281233974201)
-- Alamat: Jalan Janti Gang Harjuna No. 45, Banguntapan, Bantul, DIY 55198
-- Jam Buka: 06.30 – 23.00 (Setiap Hari)
-
----
-
-Dokumentasi lengkap tersedia di [README-TOKO.md](./README-TOKO.md).
+4. Akses situs: `https://toko-aldi.vercel.app/`

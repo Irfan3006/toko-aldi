@@ -5,7 +5,7 @@ Website landing page modern dan minimalis untuk **Toko Aldi Sembako**, toko semb
 ## 🌐 Live Demo
 
 Website ini dapat diakses melalui:
-[https://irfan3006.github.io/toko-aldi-sembako-landing/](https://irfan3006.github.io/toko-aldi-sembako-landing/)
+[https://toko-aldi.vercel.app/](https://toko-aldi.vercel.app/)
 
 ## 📋 Tentang Proyek
 
@@ -177,8 +177,8 @@ Website dioptimalkan untuk berbagai perangkat:
 
 1. Clone repository:
    ```bash
-   git clone https://github.com/irfan3006/toko-aldi-sembako-landing.git
-   cd toko-aldi-sembako-landing
+   git clone https://github.com/Irfan3006/toko-aldi.git
+   cd toko-aldi
    ```
 
 2. Buka `index.html` di browser:
@@ -232,7 +232,3 @@ Clear cache browser dan reload. Pastikan viewport meta tag ada di `<head>`.
 ## 👤 Developer
 
 Dibuat dengan ❤️ untuk Irfan Syarifudin & cto.new AI
-
----
-
-**Catatan**: Untuk pertanyaan atau bantuan, silakan hubungi via [WhatsApp](https://wa.me/6281233974201).
