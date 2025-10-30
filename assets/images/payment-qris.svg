@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="qrisGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066CC" />
+      <stop offset="100%" stop-color="#003D7A" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="16" fill="#E6F2FF" />
+  <rect x="24" y="24" width="80" height="80" rx="6" fill="url(#qrisGradient)" />
+  <rect x="32" y="32" width="28" height="28" rx="2" fill="#FFFFFF" />
+  <rect x="68" y="32" width="28" height="28" rx="2" fill="#FFFFFF" />
+  <rect x="32" y="68" width="28" height="28" rx="2" fill="#FFFFFF" />
+  <rect x="40" y="40" width="12" height="12" fill="#0066CC" />
+  <rect x="76" y="40" width="12" height="12" fill="#0066CC" />
+  <rect x="40" y="76" width="12" height="12" fill="#0066CC" />
+  <rect x="68" y="68" width="8" height="8" fill="#FFFFFF" />
+  <rect x="84" y="68" width="8" height="8" fill="#FFFFFF" />
+  <rect x="76" y="84" width="8" height="8" fill="#FFFFFF" />
+</svg>
