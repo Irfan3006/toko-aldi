@@ -44,11 +44,6 @@ Landing page minimalis, modern, dan bersih untuk Toko Aldi Sembako di Banguntapa
 └── README.md
 ```
 
-## 🚀 Deploy
+## 👤 Developer
 
-1. Pastikan perubahan sudah dipush ke branch `main`
-2. Aktifkan GitHub Pages melalui **Settings → Pages**
-   - Source: `main`
-   - Folder: `/` (root)
-3. (Opsional) Tambahkan `.nojekyll` untuk menonaktifkan Jekyll
-4. Akses situs: `https://toko-aldi.vercel.app/`
+Dibuat dengan ❤️ oelh Irfan Syarifudin & cto.new AI
