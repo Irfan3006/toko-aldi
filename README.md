@@ -46,4 +46,4 @@ Landing page minimalis, modern, dan bersih untuk Toko Aldi Sembako di Banguntapa
 
 ## 👤 Developer
 
-Dibuat dengan ❤️ oelh Irfan Syarifudin & cto.new AI
+Dibuat dengan ❤️ oleh Irfan Syarifudin & cto.new AI
