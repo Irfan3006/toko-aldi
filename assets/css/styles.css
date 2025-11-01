@@ -105,7 +105,7 @@ body {
     right: 0;
     width: 50%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(45, 156, 127, 0.03) 0%, rgba(45, 156, 127, 0.08) 100%);
+    background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
     z-index: 0;
 }
 
@@ -116,7 +116,7 @@ body {
 
 .hero-illustration {
     padding: 3rem;
-    background: linear-gradient(135deg, rgba(45, 156, 127, 0.1) 0%, rgba(69, 179, 157, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(69, 179, 157, 0.1) 100%);
     border-radius: 50%;
     display: inline-block;
     animation: float 3s ease-in-out infinite;
