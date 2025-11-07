@@ -1,49 +1,52 @@
-# Toko Aldi Sembako Landing Page
+# Toko Aldi Sembako — Simple Landing Page
 
-Landing page minimalis, modern, dan bersih untuk Toko Aldi Sembako di Banguntapan, Bantul, Daerah Istimewa Yogyakarta. Website ini dibangun menggunakan HTML5, Bootstrap 5.3.3, AOS, Animate.css, dan JavaScript ringan untuk menghadirkan pengalaman pengguna yang cepat dan responsif.
+A clean, modern landing page made for **Toko Aldi Sembako**, located in Banguntapan, Bantul, Yogyakarta. The page is designed to load fast, look good on phones and computers, and make it easy for customers to contact the store or find directions.
 
-## ✨ Fitur Utama
+---
 
-- **Hero Section** dengan CTA WhatsApp dan link Maps
-- **Liputan Pers & Ulasan** dari Medium dan Google Maps
-- **Tentang Toko** dengan paragraf panjang mudah dibaca
-- **Jam Operasional** lengkap (Senin-Minggu 06.30–23.00)
-- **Alamat & Maps** embed Google Maps responsif
-- **Metode Pembayaran** cash dan QRIS
-- **Promo Placeholder** siap diisi konten baru
-- **Footer** dengan kontak dan CTA WhatsApp
+## What visitors see
 
-## 🛠️ Stack
+- A bold **Hero section** with quick buttons to chat on WhatsApp and open the store location on Maps  
+- Press coverage and reviews from Medium and Google Maps  
+- A clear **About** section that explains the store in plain language  
+- **Opening hours** (Monday–Sunday 06:30–23:00)  
+- Embedded responsive Google Maps so customers can find the shop easily  
+- Accepted payment methods: **Cash** and **QRIS**  
+- Promo area ready to show current deals  
+- Footer with contact info and another WhatsApp call-to-action
 
-- HTML5
-- Bootstrap 5.3.3 (CDN)
-- AOS (Animate On Scroll)
-- Animate.css
-- Bootstrap Icons
-- JavaScript vanilla
+---
 
-## 🔎 SEO & Optimasi
+## Who this is for
 
-- Meta tags lengkap (title, description, keywords)
-- Open Graph & Twitter Card metadata
-- JSON-LD schema.org LocalBusiness
-- robots.txt & sitemap.xml
-- Preconnect/dns-prefetch ke CDN
-- Lazy loading pada gambar dan iframe
+This landing page is perfect for small shop owners and local businesses who want:
+- A simple, attractive web presence
+- Fast mobile-first performance
+- Easy ways for customers to contact and visit the store
 
-## 📂 Struktur Proyek
+No technical skills are needed to view or use the site.
 
-```
-├── index.html
-├── assets/
-│   ├── css/styles.css
-│   ├── js/script.js
-│   └── images/
-├── robots.txt
-├── sitemap.xml
-└── README.md
-```
+---
 
-## 👤 Developer
+## Built with (simple terms)
 
-Dibuat dengan ❤️ oleh Irfan Syarifudin & cto.new AI
+- **HTML** and **Bootstrap** for layout and responsive design  
+- Small JavaScript for a few interactive bits  
+- AOS and Animate.css for gentle page animations  
+- Icons from Bootstrap Icons
+
+---
+
+## SEO & Performance basics
+
+- Proper meta tags for search engines and social sharing  
+- Local business structured data (schema) for better visibility  
+- Sitemap and robots file included for search indexing  
+- Images and maps load lazily for faster page speed
+
+---
+
+## Credits
+
+Built with ❤️ by [Irfan Syarifudin](https://irfan-syarifudin.vercel.app/)
+
