@@ -597,16 +597,36 @@ footer {
 
 /* Progressive Image loading progressive overlay */
 .img-progressive {
-  background: #e2e8f0;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.img-progressive:not(.loaded) {
+  background: #f1f5f9;
+}
+
+.img-progressive.loaded {
+  background: transparent !important;
 }
 
 .img-progressive::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(
     110deg,
     #e2e8f0 8%,
     #f1f5f9 18%,
     #e2e8f0 33%
   );
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.img-progressive.loaded::before {
+  opacity: 0;
 }
 
 /* Full-page Skeleton Loading Overlay */
