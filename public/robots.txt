@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://toko-aldi.vercel.app/sitemap.xml
