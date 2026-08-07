@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="id-ID"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#2563eb"><meta name="robots" content="noindex, nofollow"><link rel="icon" type="image/png" href="/src/assets/img/favicon.webp"><!-- Global Resource Hints for faster loading --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="preconnect" href="https://unpkg.com"><link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://unpkg.com"><link rel="dns-prefetch" href="https://script.google.com"><link rel="dns-prefetch" href="https://ui-avatars.com"><link rel="dns-prefetch" href="https://images.unsplash.com"> <title>Create Post - Sibra Tech Blog</title> <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/font-awesome/4.7.0/css/font-awesome.min.css"> <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <style>
+      .editor-container { max-width: 800px; margin: 0 auto; }
+    </style> <title>Sibra Tech Blog</title><meta name="description" content="Security-first tech blog sharing tutorials, insights, and updates from Sibra Tech."><meta name="keywords" content="blog, tech, web security, sibra tech"><link rel="canonical" href="https://sibra.store/blog"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:locale" content="id_ID"><meta property="og:site_name" content="Sibra Tech Blog"><meta property="og:url" content="https://sibra.store/blog"><meta property="og:title" content="Sibra Tech Blog"><meta property="og:description" content="Security-first tech blog sharing tutorials, insights, and updates from Sibra Tech."><meta property="og:image" content="https://sibra.store/src/assets/img/og_image.png"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Sibra Tech Blog"><meta name="twitter:description" content="Security-first tech blog sharing tutorials, insights, and updates from Sibra Tech."><meta name="twitter:image" content="https://sibra.store/src/assets/img/og_image.png"><!-- Fonts: Inter and Outfit --><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><!-- Bootstrap 5 & Icons --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><!-- Custom Blog Stylesheet --><link rel="stylesheet" href="/assets/css/blog.css"><!-- AOS Animation Library --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script></head> <body> <div id="navbar-placeholder"></div> <main class="flex-grow">   <main class="container my-5 py-5 min-vh-80 editor-container"> <div class="card shadow-sm border-0"> <div class="card-body p-4 p-md-5"> <h2 class="fw-bold mb-4">Tulis Postingan Baru</h2> <form id="createPostForm" novalidate> <div class="mb-4"> <label class="form-label fw-500">Judul Postingan</label> <input type="text" class="form-control form-control-lg" id="title" placeholder="Masukkan judul yang menarik..." required> </div> <div class="row mb-4"> <div class="col-md-6 mb-3 mb-md-0"> <label class="form-label fw-500">Kategori</label> <select class="form-select" id="category" required> <option value="" disabled selected>Pilih Kategori...</option> </select> </div> <div class="col-md-6"> <label class="form-label fw-500">URL Gambar Thumbnail</label> <input type="url" class="form-control" id="thumbnail" placeholder="https://contoh.com/gambar.jpg"> <div class="form-text text-muted">Opsional. Biarkan kosong untuk menggunakan thumbnail default.</div> </div> </div> <div class="mb-4"> <label class="form-label fw-500">Konten (Markdown)</label> <textarea id="contentEditor"></textarea> </div> <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top"> <a href="/blog" class="btn btn-outline-secondary px-4">Batal</a> <button type="submit" class="btn btn-primary px-4 d-flex align-items-center gap-2" id="submitBtn"> <span>Terbitkan Postingan</span> <div class="spinner-border spinner-border-sm d-none" role="status" id="loadingSpinner"></div> </button> </div> </form> </div> </div> </main>   </main> <div id="footer-placeholder"></div> <!-- Global scripts --> <script>(function(){const scriptUrl = "https://script.google.com/macros/s/AKfycbzVuZZdrSPMwjfX0nQBCkEVZatr3Hx4VOAsi0hzCOkAl4hoUbvbUKRuysW7ENHXefXo/exec";
+
+    window.BLOG_SCRIPT_URL = scriptUrl;
+  })();</script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <script src="/assets/js/api.js"></script>  <script src="/assets/js/categories.js"></script> <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        Auth.requireAdmin();
+        populateCategorySelect('category');
+
+        const simplemde = new SimpleMDE({ 
+          element: document.getElementById("contentEditor"),
+          spellChecker: false,
+          placeholder: "Tulis cerita Anda di sini..."
+        });
+
+        document.getElementById('createPostForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const title = document.getElementById('title').value;
+          const category = document.getElementById('category').value;
+          const thumbnail = document.getElementById('thumbnail').value;
+          const markdownContent = simplemde.value();
+          
+          if (!title || !title.trim()) {
+            showToast('error', 'Error', 'Judul postingan tidak boleh kosong');
+            return;
+          }
+          if (!category) {
+            showToast('error', 'Error', 'Kategori tidak boleh kosong');
+            return;
+          }
+          if (!markdownContent || !markdownContent.trim()) {
+            showToast('error', 'Error', 'Konten postingan tidak boleh kosong');
+            return;
+          }
+          const htmlContent = marked.parse(markdownContent);
+
+          const postData = {
+            title: title,
+            category: category,
+            thumbnail: thumbnail,
+            content: htmlContent
+          };
+
+          const submitBtn = document.getElementById('submitBtn');
+          const loadingSpinner = document.getElementById('loadingSpinner');
+          submitBtn.disabled = true;
+          loadingSpinner.classList.remove('d-none');
+          submitBtn.querySelector('span').innerText = 'Menerbitkan...';
+
+          const res = await API.createPost(postData);
+          submitBtn.disabled = false;
+          loadingSpinner.classList.add('d-none');
+          submitBtn.querySelector('span').innerText = 'Terbitkan Postingan';
+
+          if (res.success) {
+            showToast('success', 'Postingan Diterbitkan!');
+            setTimeout(() => { window.location.href = `/blog/post/${res.data.slug}`; }, 1500);
+          } else { 
+            showToast('error', 'Gagal menerbitkan', res.message); 
+          }
+        });
+      });
+    </script>  </body></html>

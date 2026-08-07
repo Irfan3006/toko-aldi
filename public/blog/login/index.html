@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="id-ID"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#2563eb"><meta name="robots" content="noindex, nofollow"><link rel="icon" type="image/png" href="/src/assets/img/favicon.webp"><!-- Global Resource Hints for faster loading --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="preconnect" href="https://unpkg.com"><link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://unpkg.com"><link rel="dns-prefetch" href="https://script.google.com"><link rel="dns-prefetch" href="https://ui-avatars.com"><link rel="dns-prefetch" href="https://images.unsplash.com"> <title>Login - Sibra Tech Blog</title> <meta name="description" content="Masuk ke dashboard admin Sibra Tech Blog."> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> <style>
+      .auth-bg { background: linear-gradient(135deg, var(--background) 0%, #f1f5f9 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+      .auth-card { max-width: 400px; width: 100%; padding: 2.5rem; border-radius: var(--radius); }
+    </style> <title>Sibra Tech Blog</title><meta name="description" content="Security-first tech blog sharing tutorials, insights, and updates from Sibra Tech."><meta name="keywords" content="blog, tech, web security, sibra tech"><link rel="canonical" href="https://sibra.store/blog"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:locale" content="id_ID"><meta property="og:site_name" content="Sibra Tech Blog"><meta property="og:url" content="https://sibra.store/blog"><meta property="og:title" content="Sibra Tech Blog"><meta property="og:description" content="Security-first tech blog sharing tutorials, insights, and updates from Sibra Tech."><meta property="og:image" content="https://sibra.store/src/assets/img/og_image.png"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Sibra Tech Blog"><meta name="twitter:description" content="Security-first tech blog sharing tutorials, insights, and updates from Sibra Tech."><meta name="twitter:image" content="https://sibra.store/src/assets/img/og_image.png"><!-- Fonts: Inter and Outfit --><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><!-- Bootstrap 5 & Icons --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><!-- Custom Blog Stylesheet --><link rel="stylesheet" href="/assets/css/blog.css"><!-- AOS Animation Library --><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script></head> <body> <div id="navbar-placeholder"></div> <main class="flex-grow">   <div class="auth-bg"> <div class="card auth-card shadow-lg border-0 animate__animated animate__fadeInUp bg-white"> <div class="text-center mb-4"> <h2 class="fw-bold text-dark mb-1">Sibra Tech Blog</h2> <p class="text-muted">Selamat datang! Silakan login.</p> </div> <div id="auth-alert" class="alert d-none animate__animated animate__fadeIn" role="alert"></div> <form id="loginForm"> <div class="mb-3"> <label class="form-label fw-500">Username atau Email</label> <div class="input-group"> <span class="input-group-text"><i class="bi bi-person"></i></span> <input type="text" class="form-control" id="username" required> </div> </div> <div class="mb-4"> <div class="d-flex justify-content-between align-items-center mb-2"> <label class="form-label fw-500 mb-0">Kata Sandi</label> </div> <div class="input-group"> <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock"></i></span> <input type="password" class="form-control border-start-0" id="password" required placeholder="••••••••"> <button class="btn btn-outline-light border text-muted" type="button" id="togglePassword"> <i class="bi bi-eye"></i> </button> </div> </div> <button type="submit" class="btn btn-primary w-100 py-3 mb-3 shadow-sm d-flex align-items-center justify-content-center gap-2" id="submitBtn"> <span>Masuk Sekarang</span> <div class="spinner-border spinner-border-sm d-none" role="status" id="loadingSpinner"></div> </button> <div class="text-center"> <span class="text-muted">Belum punya akun? <a href="/blog/signup" class="fw-bold text-primary">Daftar</a></span> </div> <div class="text-center mt-3"> <a href="/blog" class="text-muted text-decoration-underline" style="font-size: 0.85rem;">Kembali ke Beranda</a> </div> </form> </div> </div>   </main> <div id="footer-placeholder"></div> <!-- Global scripts --> <script>(function(){const scriptUrl = "https://script.google.com/macros/s/AKfycbzVuZZdrSPMwjfX0nQBCkEVZatr3Hx4VOAsi0hzCOkAl4hoUbvbUKRuysW7ENHXefXo/exec";
+
+    window.BLOG_SCRIPT_URL = scriptUrl;
+  })();</script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <script src="/assets/js/api.js"></script>  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        Auth.checkAuthRedirect();
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        togglePassword.addEventListener('click', () => {
+          const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+          password.setAttribute('type', type);
+          togglePassword.querySelector('i').classList.toggle('bi-eye');
+          togglePassword.querySelector('i').classList.toggle('bi-eye-slash');
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const submitBtn = document.getElementById('submitBtn');
+          const loadingSpinner = document.getElementById('loadingSpinner');
+          const user = document.getElementById('username').value.trim();
+          const pass = document.getElementById('password').value;
+          if(!user || !pass) return;
+
+          submitBtn.disabled = true;
+          loadingSpinner.classList.remove('d-none');
+          submitBtn.querySelector('span').innerText = 'Harap tunggu...';
+
+          const res = await API.login(user, pass);
+          submitBtn.disabled = false;
+          loadingSpinner.classList.add('d-none');
+          submitBtn.querySelector('span').innerText = 'Masuk Sekarang';
+
+          const alertBox = document.getElementById('auth-alert');
+          if(res.success) {
+            alertBox.className = 'alert alert-success animate__animated animate__fadeIn';
+            alertBox.textContent = 'Login berhasil! Mengalihkan...';
+            alertBox.classList.remove('d-none');
+            Auth.setSession(res.data, res.token);
+            setTimeout(() => {
+              if (res.data.role === 'admin') { 
+                window.location.href = '/blog/admin'; 
+              } else { 
+                window.location.href = '/blog'; 
+              }
+            }, 1000);
+          } else {
+            alertBox.className = 'alert alert-danger animate__animated animate__shakeX';
+            alertBox.textContent = res.message || 'Login Gagal. Silakan periksa kembali akun Anda.';
+            alertBox.classList.remove('d-none');
+          }
+        });
+      });
+    </script>  </body></html>
