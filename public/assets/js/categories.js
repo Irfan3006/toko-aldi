@@ -16,7 +16,7 @@ const BLOG_CATEGORIES = [
   "Paket Hemat Belanja Bulanan",
   "Tips Belanja Hemat",
   "Panduan Menyimpan Sembako",
-  "Informasi Toko Aldi Banguntapan",
+  "Informasi Toko Aldi Sembako",
   "Jam Buka & Operasional",
   "Metode Pembayaran QRIS & Cash",
   "Pengumuman & Update Toko",
