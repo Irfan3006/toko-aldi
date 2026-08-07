@@ -24,21 +24,22 @@ Desktop.ini
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
+pnpm-debug.log*
 
 # Environment
 .env
 .env.local
 .env.*.local
 
-# Build outputs
+# Astro & Vercel Build outputs
+.astro/
+.vercel/
 dist/
 build/
-*.min.js
-*.min.css
 
-# Dependencies (if using Node.js in future)
+# Dependencies
 node_modules/
+.pnpm-store/
 package-lock.json
 yarn.lock
 
