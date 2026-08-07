@@ -61,7 +61,7 @@ function toIsoDate(dateString: any) {
 }
 
 const postTitle = post.title || "Post";
-let plainContent = "Baca artikel lengkap di Sibra Tech Blog.";
+let plainContent = "Baca artikel lengkap di Aldi Artikel - Toko Aldi Minimarket Jogja Terlengkap.";
 let wordCount = 0;
 let readingTime = 1;
 
@@ -71,22 +71,22 @@ if (post.content) {
   if (cleaned.length > 155) {
     plainContent = plainContent.trim() + "...";
   } else if (!plainContent) {
-    plainContent = "Baca artikel lengkap di Sibra Tech Blog.";
+    plainContent = "Baca artikel lengkap di Aldi Artikel - Toko Aldi Minimarket Jogja Terlengkap.";
   }
   wordCount = cleaned.split(/\s+/).filter(Boolean).length;
   readingTime = Math.ceil(wordCount / 225) || 1;
 }
 
-const host = Astro.url.host || "sibra.store";
-const defaultThumb = `https://${host}/src/assets/img/favicon.webp`;
+const host = Astro.url.host || "toko-aldi.vercel.app";
+const defaultThumb = `https://${host}/assets/images/favicon.svg`;
 let postThumbnail = defaultThumb;
 if (post.thumbnail) {
   postThumbnail = post.thumbnail.startsWith("http") ? post.thumbnail : `https://${host}${post.thumbnail}`;
 }
 
-const canonicalUrl = `https://sibra.store/blog/post/${slug}`;
-const waMessage = `Halo Sibra Tech, saya telah membaca artikel "${postTitle}" dan ingin konsultasi lebih lanjut terkait layanan software, scraping, atau keamanan.`;
-const waLink = `https://wa.me/6289614470802?text=${encodeURIComponent(waMessage)}`;
+const canonicalUrl = `https://toko-aldi.vercel.app/blog/post/${slug}`;
+const waMessage = `Halo Toko Aldi, saya telah membaca artikel "${postTitle}" di Aldi Artikel dan ingin informasi lebih lanjut.`;
+const waLink = `https://wa.me/6281233974201?text=${encodeURIComponent(waMessage)}`;
 const imageType = getImageType(postThumbnail);
 const imageAlt = post.title || postTitle;
 
@@ -111,8 +111,8 @@ const jsonLdGraph = {
       "@type": "WebSite",
       "@id": `https://${host}/#website`,
       url: `https://${host}/`,
-      name: "Sibra Tech Blog",
-      description: "Platform Berbagi Cerita dan Artikel Kreatif",
+      name: "Aldi Artikel - Toko Aldi Minimarket Jogja Terlengkap",
+      description: "Pusat Informasi, Promo & Tips Belanja Sembako Murah Banguntapan, Bantul, Yogyakarta",
       publisher: {
         "@id": `https://${host}/#organization`,
       },
@@ -131,13 +131,13 @@ const jsonLdGraph = {
     {
       "@type": "Organization",
       "@id": `https://${host}/#organization`,
-      name: "Sibra Tech",
+      name: "Toko Aldi Sembako",
       url: `https://${host}/`,
       logo: {
         "@type": "ImageObject",
         "@id": `https://${host}/#logo`,
-        url: `https://${host}/src/assets/img/favicon.webp`,
-        caption: "Sibra Tech Logo",
+        url: `https://${host}/assets/images/favicon.svg`,
+        caption: "Toko Aldi Logo",
       },
       image: {
         "@id": `https://${host}/#logo`,
@@ -147,7 +147,7 @@ const jsonLdGraph = {
       "@type": "WebPage",
       "@id": canonicalUrl,
       url: canonicalUrl,
-      name: `${postTitle} - Sibra Tech Blog`,
+      name: `${postTitle} - Aldi Artikel`,
       isPartOf: {
         "@id": `https://${host}/#website`,
       },
@@ -318,8 +318,8 @@ let recommended = [...related, ...others].slice(0, 3);
     <meta property="article:section" content={post.category} />
     {keywordsList.slice(0, 5).map((tag: any) => <meta property="article:tag" content={tag} />)}
     
-    <script type="application/ld+json" id="structured-data" set:html={jsonLd} />
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=698357388ea334cc0e5b7c25&product=sop" async="async"></script>
+    <script is:inline type="application/ld+json" id="structured-data" set:html={jsonLd} />
+    <script is:inline type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=698357388ea334cc0e5b7c25&product=sop" async="async"></script>
 
     <style is:inline>
       :root {

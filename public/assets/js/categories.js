@@ -1,16 +1,26 @@
 const BLOG_CATEGORIES = [
-  "SIBRA", "Data Scraping", "Technology", "Programming", "Artificial Intelligence", "Web Development", "Mobile Development",
-  "Cyber Security", "Blockchain", "Data Science", "Machine Learning", "Cloud Computing",
-  "Internet of Things (IoT)", "Robotics", "Software Engineering", "Game Development", "UI/UX Design",
-  "Gadgets", "Hardware", "Networking", "Open Source", "Tech News", "Digital Marketing",
-  "SEO", "Social Media", "SOC", "Blue Team", "Red Team", "Purple Team", "Wazuh", "Nmap", "Nuclei", 
-  "Kali Linux", "Wireshark", "Burp Suite", "Metasploit", "Penetration Testing", "Vulnerability Assessment", 
-  "Threat Hunting", "Incident Response", "Digital Forensics", "CTF", "Bug Bounty", "OSINT", 
-  "Google Dorking", "Shodan", "Network Security", "Web Security", "API Security", "Cloud Security", 
-  "DevSecOps", "Linux", "Network Monitoring", "Wireless Security", "CPNS", "PPPK", "Mental Health", 
-  "Self Care", "Productivity", "Career", "Work Life", "Education", "Online Learning", "Academic", 
-  "Science", "Health", "Lifestyle", "General", "Announcement", "Update", "Meta", "FAQ", "Help", 
-  "Tutorial", "How-to", "Tips & Tricks", "Life Hacks", "Uncategorized"
+  "Sembako & Kebutuhan Pokok",
+  "Beras & Tepung",
+  "Minyak Goreng & Mentega",
+  "Gula, Garam & Bumbu Dapur",
+  "Telur & Olahan Susu",
+  "Mie Instan & Pasta",
+  "Makanan & Minuman Ringan",
+  "Kopi, Teh & Minuman Sachet",
+  "Air Mineral & Minuman Dingin",
+  "Perlengkapan Mandi & Sabun",
+  "Deterjen & Pembersih Rumah",
+  "Perlengkapan Bayi & Anak",
+  "Perlengkapan Dapur & Plastik",
+  "Promo Sembako Jogja",
+  "Paket Hemat Belanja Bulanan",
+  "Tips Belanja Hemat",
+  "Panduan Menyimpan Sembako",
+  "Informasi Toko Aldi Banguntapan",
+  "Jam Buka & Operasional",
+  "Metode Pembayaran QRIS & Cash",
+  "Pengumuman & Update Toko",
+  "Umum"
 ];
 
 function populateCategorySelect(selectId, selectedValue = "") {
@@ -53,7 +63,7 @@ function initSearchableSelect(originalSelect, categories, selectedValue) {
 
   const searchBox = document.createElement('div');
   searchBox.className = 'search-select-search-box';
-  searchBox.innerHTML = `<input type="text" class="search-select-input-field" placeholder="Cari kategori...">`;
+  searchBox.innerHTML = `<input type="text" class="search-select-input-field" placeholder="Cari kategori sembako...">`;
   menu.appendChild(searchBox);
 
   const searchInput = searchBox.querySelector('input');

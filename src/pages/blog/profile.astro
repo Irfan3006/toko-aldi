@@ -6,7 +6,7 @@ export const prerender = false;
 ---
 <BlogLayout noindex={true}>
   <Fragment slot="head">
-    <title>Profil Pengguna - Sibra Tech Blog</title>
+    <title>Profil Pengguna - Aldi Artikel</title>
     <meta name="robots" content="noindex, nofollow">
     <style is:inline>
       .profile-header {
@@ -199,7 +199,7 @@ export const prerender = false;
         document.getElementById('profile-name').innerText = safeUsername;
         document.getElementById('profile-role').innerText = (profileData.role || 'user').toUpperCase();
 
-        document.title = `${safeUsername} - Sibra Tech Blog`;
+        document.title = `${safeUsername} - Aldi Artikel`;
 
         document.getElementById('stat-posts').innerText = userPosts.length;
 

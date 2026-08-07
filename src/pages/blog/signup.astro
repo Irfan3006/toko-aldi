@@ -3,7 +3,7 @@ import BlogLayout from '../../layouts/BlogLayout.astro';
 ---
 <BlogLayout noindex={true}>
   <Fragment slot="head">
-    <title>Daftar Akun - Sibra Tech Blog</title>
+    <title>Daftar Akun - Aldi Artikel</title>
     <meta name="robots" content="noindex, nofollow" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style is:inline>
@@ -15,10 +15,10 @@ import BlogLayout from '../../layouts/BlogLayout.astro';
   <div class="auth-bg">
     <div class="card auth-card shadow-lg border-0 animate__animated animate__fadeInUp bg-white">
       <div class="text-center mb-4">
-        <div class="d-flex align-items-center justify-content-center mx-auto mb-3 animate__animated animate__bounceIn" style="width: 48px; height: 48px; background-color: #0f172a; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
-          <svg width="24" height="24" fill="none" stroke="#ffffff" viewBox="0 0 24 24" style="width: 24px; height: 24px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <div class="d-flex align-items-center justify-content-center mx-auto mb-3 animate__animated animate__bounceIn" style="width: 48px; height: 48px; background-color: var(--accent); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+          <i class="bi bi-shop text-white fs-4"></i>
         </div>
-        <h2 class="fw-bold text-dark mb-1">Sibra Tech Blog</h2>
+        <h2 class="fw-bold text-dark mb-1">Aldi Artikel</h2>
         <p class="text-muted">Buat akun Anda untuk mulai membaca dan berdiskusi.</p>
       </div>
       <div id="auth-alert" class="alert d-none animate__animated animate__fadeIn" role="alert"></div>

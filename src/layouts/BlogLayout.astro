@@ -12,7 +12,7 @@ interface Props {
 const {
   title = BLOG_CONFIG.blogTitle,
   description = BLOG_CONFIG.blogDescription,
-  keywords = 'blog, tech, web security, sibra tech',
+  keywords = 'Aldi Artikel, toko sembako Jogja, minimarket Banguntapan, sembako murah Bantul, promo sembako Yogyakarta, toko kelontong Jalan Janti',
   canonical,
   noindex = false
 } = Astro.props;
@@ -24,30 +24,9 @@ const finalCanonical = canonical || computedCanonical;
 <!DOCTYPE html>
 <html lang="id-ID">
 <head>
-  <!-- Google tag (gtag.js) - Deferred for TBT optimization -->
-  <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    function loadGtag() {
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-TP74YHPW1L';
-      document.head.appendChild(script);
-      gtag('config', 'G-TP74YHPW1L');
-    }
-
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadGtag);
-    } else {
-      setTimeout(loadGtag, 1500);
-    }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2563eb">
+  <meta name="theme-color" content="#2D9C7F">
   {noindex ? (
     <meta name="robots" content="noindex, nofollow" />
   ) : (
@@ -57,7 +36,8 @@ const finalCanonical = canonical || computedCanonical;
       <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     </>
   )}
-  <link rel="icon" type="image/png" href="/src/assets/img/favicon.webp">
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon.png">
 
   <!-- Global Resource Hints for faster loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,8 +49,6 @@ const finalCanonical = canonical || computedCanonical;
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="dns-prefetch" href="https://unpkg.com">
   <link rel="dns-prefetch" href="https://script.google.com">
-  <link rel="dns-prefetch" href="https://ui-avatars.com">
-  <link rel="dns-prefetch" href="https://images.unsplash.com">
 
   <slot name="head" />
   
@@ -86,13 +64,13 @@ const finalCanonical = canonical || computedCanonical;
   <meta property="og:url" content={finalCanonical}>
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
-  <meta property="og:image" content="https://sibra.store/src/assets/img/og_image.png">
+  <meta property="og:image" content="https://toko-aldi.vercel.app/assets/images/og-image.jpg">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
-  <meta name="twitter:image" content="https://sibra.store/src/assets/img/og_image.png">
+  <meta name="twitter:image" content="https://toko-aldi.vercel.app/assets/images/og-image.jpg">
 
   <!-- Fonts: Inter and Outfit -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

@@ -1,4 +1,4 @@
-const SCRIPT_URL = window.BLOG_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwVRICqF1G3hYe77-LZELw6I-uEK0oI3bpEPH4HKfZkp9rja5caenvUwGuuxCTKu1aw/exec'
+const SCRIPT_URL = window.BLOG_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz0hGZcNGnDyhuXHbsBYSz-T5pVwAdXSPsR5scvP_ymd9IRx_Fq7tdw4ba6NE7CYKcF/exec'
 function sanitizeHTML(html) {
   const doc = new DOMParser().parseFromString(html, 'text/html');
   const dangerousTags = ['script', 'iframe', 'object', 'embed', 'form', 'input', 'textarea', 'select', 'button', 'link', 'style', 'meta', 'base', 'applet'];
@@ -524,24 +524,25 @@ function renderNavbar() {
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a href="/" class="navbar-brand d-flex align-items-center gap-3 text-decoration-none group">
-        <div class="brand-logo-box w-9 h-9 bg-slate-950 flex items-center justify-center rounded-xl shadow-lg group-hover:scale-105 transition-transform">
-          <svg class="brand-logo-svg w-5 h-5 text-white" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        <div class="brand-logo-box w-9 h-9 flex items-center justify-center rounded-xl shadow-lg group-hover:scale-105 transition-transform" style="background-color: var(--accent);">
+          <i class="bi bi-shop text-white fs-5"></i>
         </div>
-        <span class="brand-logo-text text-xl font-black tracking-tight text-slate-900 uppercase">SIBRA TECH</span>
+        <span class="brand-logo-text text-xl font-black tracking-tight uppercase" style="color: var(--headline);">ALDI ARTIKEL</span>
       </a>
       <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <i class="bi bi-list fs-1"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="/blog">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/blog/explore">Explore</a></li>
-          <li class="nav-item"><a class="nav-link" href="/blog/categories">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Toko Aldi Utama</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog">Blog Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog/explore">Eksplorasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog/categories">Kategori</a></li>
         </ul>
         <ul class="navbar-nav align-items-lg-center gap-2" id="auth-nav">
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link text-primary fw-bold" href="/blog/create-post">
-              <i class="bi bi-pencil-square me-1"></i> Write
+              <i class="bi bi-pencil-square me-1"></i> Tulis Artikel
             </a>
           </li>
         </ul>
@@ -556,11 +557,13 @@ function renderFooter() {
   <footer class="py-5 mt-5 border-top border-secondary border-opacity-10">
     <div class="container text-center">
       <div class="d-flex justify-content-center flex-wrap gap-3 mb-3" style="font-size: 0.85rem;">
-        <a href="/blog" class="text-muted text-decoration-none hover-accent">Blog Home</a>
+        <a href="/" class="text-muted text-decoration-none hover-accent">Toko Aldi Utama</a>
         <span class="text-muted opacity-25">|</span>
-        <a href="/privacy-policy" class="text-muted text-decoration-none hover-accent">Privacy Policy</a>
+        <a href="/blog" class="text-muted text-decoration-none hover-accent">Aldi Artikel</a>
+        <span class="text-muted opacity-25">|</span>
+        <a href="/#alamat" class="text-muted text-decoration-none hover-accent">Lokasi Banguntapan, Bantul</a>
       </div>
-      <p class="text-muted mb-2" style="font-size: 0.9rem;">&copy; ${new Date().getFullYear()} Sibra Tech Blog. All rights reserved.</p>
+      <p class="text-muted mb-2" style="font-size: 0.9rem;">&copy; ${new Date().getFullYear()} Aldi Artikel - Toko Aldi Minimarket Jogja Terlengkap. Semua Hak Dilindungi.</p>
     </div>
   </footer>
   `;

@@ -5,13 +5,19 @@ import { BLOG_CONFIG } from '../../blog-config.js';
 export const prerender = false;
 
 const defaultCategories = [
-  "Web Development",
-  "Cybersecurity",
-  "Data Scraping",
-  "Python Automation",
-  "SEO & AI Optimization",
-  "Web Pentest",
-  "Cloud & DevOps"
+  "Sembako & Kebutuhan Pokok",
+  "Beras & Tepung",
+  "Minyak Goreng & Mentega",
+  "Gula, Garam & Bumbu Dapur",
+  "Telur & Olahan Susu",
+  "Mie Instan & Pasta",
+  "Makanan & Minuman Ringan",
+  "Kopi, Teh & Minuman Sachet",
+  "Perlengkapan Mandi & Sabun",
+  "Deterjen & Pembersih Rumah",
+  "Promo Sembako Jogja",
+  "Tips Belanja Hemat",
+  "Informasi Toko Aldi Banguntapan"
 ];
 
 let serverCategoryCounts: Record<string, number> = {};
@@ -40,9 +46,9 @@ try {
   allCategories = defaultCategories.map(name => ({ name, count: 0 }));
 }
 ---
-<BlogLayout title="Kategori Artikel - Sibra Tech Blog" canonical={`${BLOG_CONFIG.siteUrl}/blog/categories`}>
+<BlogLayout title="Kategori Artikel - Aldi Artikel" canonical={`${BLOG_CONFIG.siteUrl}/blog/categories`}>
   <Fragment slot="head">
-    <title>Kategori Artikel - Sibra Tech Blog</title>
+    <title>Kategori Artikel - Aldi Artikel</title>
     <style is:inline>
       .category-card {
         background: var(--card-bg);

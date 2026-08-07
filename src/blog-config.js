@@ -1,7 +1,6 @@
 export const BLOG_CONFIG = {
-  // Replace this with your own deployed Apps Script Web App URL if needed.
-  scriptUrl: import.meta.env.PUBLIC_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwVRICqF1G3hYe77-LZELw6I-uEK0oI3bpEPH4HKfZkp9rja5caenvUwGuuxCTKu1aw/exec',
-  siteUrl: 'https://sibra.store',
-  blogTitle: 'Sibra Tech Blog',
-  blogDescription: 'Security-first tech blog sharing tutorials, insights, and updates from Sibra Tech.'
+  scriptUrl: import.meta.env.PUBLIC_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz0hGZcNGnDyhuXHbsBYSz-T5pVwAdXSPsR5scvP_ymd9IRx_Fq7tdw4ba6NE7CYKcF/exec',
+  siteUrl: 'https://toko-aldi.vercel.app',
+  blogTitle: 'Aldi Artikel - Toko Aldi Minimarket Jogja Terlengkap',
+  blogDescription: 'Pusat informasi, tips belanja, promo, dan kebutuhan harian rumah tangga dari Toko Aldi Minimarket Banguntapan, Bantul, Yogyakarta.'
 };
