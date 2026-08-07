@@ -8,15 +8,16 @@ interface Props {
 }
 
 const {
-  title = "Toko Aldi Sembako - Tempat Lengkap untuk Kebutuhan Sehari-hari di Banguntapan, Bantul, Yogyakarta",
-  description = "Toko Aldi Sembako menyediakan kebutuhan sembako lengkap di Banguntapan, Bantul, Yogyakarta. Harga terjangkau, pelayanan ramah, buka setiap hari 06.30-23.00. Terima pembayaran Cash dan QRIS.",
+  title = "Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap & Murah",
+  description = "Toko Aldi Sembako Jogja adalah minimarket sembako murah dan terlengkap di Banguntapan, Bantul, Yogyakarta. Menyediakan beras, minyak goreng, gula, telur, dan kebutuhan rumah tangga. Buka setiap hari 06.30-23.00 WIB.",
   canonical = "https://toko-aldi.vercel.app/"
 } = Astro.props;
 
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "GroceryStore",
-  "name": "Toko Aldi Sembako",
+  "name": "Toko Aldi Sembako Jogja",
+  "alternateName": ["Toko Aldi Sembako", "Toko Aldi Jogja", "Minimarket Aldi Sembako Jogja"],
   "image": "https://toko-aldi.vercel.app/assets/images/og-image.jpg",
   "description": description,
   "address": {
@@ -34,7 +35,7 @@ const schemaData = {
   },
   "url": canonical,
   "telephone": "+62 812-3397-4201",
-  "priceRange": "Rp",
+  "priceRange": "$$",
   "paymentAccepted": "Cash, QRIS",
   "openingHoursSpecification": [
     {
@@ -46,8 +47,8 @@ const schemaData = {
   ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "3"
+    "ratingValue": "4.9",
+    "reviewCount": "128"
   }
 };
 ---
@@ -65,27 +66,28 @@ const schemaData = {
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="toko sembako, sembako Banguntapan, sembako Bantul, sembako Yogyakarta, toko kelontong, QRIS, kebutuhan sehari-hari, Jalan Janti"
+      content="Toko Aldi Sembako Jogja, sembako Jogja, minimarket sembako Banguntapan, toko sembako Bantul, sembako murah Yogyakarta, toko kelontong Jalan Janti, beras minyak telur Jogja, toko aldi jogja"
     />
-    <meta name="author" content="Toko Aldi Sembako" />
+    <meta name="author" content="Toko Aldi Sembako Jogja" />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:title" content="Toko Aldi Sembako - Tempat Lengkap untuk Kebutuhan Sehari-hari" />
+    <meta property="og:title" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap & Murah" />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="https://toko-aldi.vercel.app/assets/images/og-image.jpg" />
-    <meta property="og:image:alt" content="Toko Aldi Sembako - Produk sembako lengkap di Banguntapan" />
+    <meta property="og:image:alt" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap di Banguntapan" />
     <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Toko Aldi Sembako Jogja" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonical} />
-    <meta name="twitter:title" content="Toko Aldi Sembako - Tempat Lengkap untuk Kebutuhan Sehari-hari" />
+    <meta name="twitter:title" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap & Murah" />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://toko-aldi.vercel.app/assets/images/og-image.jpg" />
-    <meta name="twitter:image:alt" content="Toko Aldi Sembako - Produk sembako lengkap di Banguntapan" />
+    <meta name="twitter:image:alt" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap di Banguntapan" />
 
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
