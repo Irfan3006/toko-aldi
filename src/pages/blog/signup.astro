@@ -1,0 +1,135 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+---
+<BlogLayout noindex={true}>
+  <Fragment slot="head">
+    <title>Daftar Akun - Sibra Tech Blog</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style is:inline>
+      .auth-bg { background: linear-gradient(135deg, var(--background) 0%, #f1f5f9 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 0; }
+      .auth-card { max-width: 450px; width: 100%; padding: 2.5rem; border-radius: var(--radius); }
+    </style>
+  </Fragment>
+
+  <div class="auth-bg">
+    <div class="card auth-card shadow-lg border-0 animate__animated animate__fadeInUp bg-white">
+      <div class="text-center mb-4">
+        <div class="d-flex align-items-center justify-content-center mx-auto mb-3 animate__animated animate__bounceIn" style="width: 48px; height: 48px; background-color: #0f172a; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+          <svg width="24" height="24" fill="none" stroke="#ffffff" viewBox="0 0 24 24" style="width: 24px; height: 24px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h2 class="fw-bold text-dark mb-1">Sibra Tech Blog</h2>
+        <p class="text-muted">Buat akun Anda untuk mulai membaca dan berdiskusi.</p>
+      </div>
+      <div id="auth-alert" class="alert d-none animate__animated animate__fadeIn" role="alert"></div>
+      <form id="signupForm">
+        <!-- Honeypot anti-spam -->
+        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+          <input type="text" name="company" id="hp-company" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" id="signup-loaded-at" value="">
+
+        <div class="mb-3">
+          <label class="form-label fw-500">Nama Pengguna</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input type="text" class="form-control" id="username" required minlength="3">
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-500">Alamat Email</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label fw-500">Kata Sandi</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock"></i></span>
+            <input type="password" class="form-control border-start-0" id="password" required minlength="6" placeholder="Min. 6 karakter">
+            <button class="btn btn-outline-light border text-muted" type="button" id="togglePassword">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+          <div class="form-text mt-2"><i class="bi bi-info-circle me-1"></i> Kata sandi minimal harus 6 karakter.</div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 py-3 mb-3 shadow-sm d-flex align-items-center justify-content-center gap-2" id="submitBtn">
+          <span>Daftar Sekarang</span>
+          <div class="spinner-border spinner-border-sm d-none" role="status" id="loadingSpinner"></div>
+        </button>
+        <div class="text-center">
+          <span class="text-muted">Sudah punya akun?</span> <a href="/blog/login" class="fw-bold text-primary">Masuk</a>
+        </div>
+        <div class="text-center mt-3">
+           <a href="/blog" class="text-muted text-decoration-underline" style="font-size: 0.85rem;">Kembali ke Beranda</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <Fragment slot="scripts">
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        Auth.checkAuthRedirect();
+
+        const loadedAtField = document.getElementById('signup-loaded-at');
+        if (loadedAtField) loadedAtField.value = Date.now().toString();
+
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        togglePassword.addEventListener('click', () => {
+          const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+          password.setAttribute('type', type);
+          togglePassword.querySelector('i').classList.toggle('bi-eye');
+          togglePassword.querySelector('i').classList.toggle('bi-eye-slash');
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const hp = document.getElementById('hp-company');
+          if (hp && hp.value) {
+            Swal.fire({ icon: 'success', title: 'Pendaftaran berhasil!', text: 'Silakan login.', confirmButtonColor: 'var(--accent)' });
+            return;
+          }
+
+          const loadedAt = parseInt(document.getElementById('signup-loaded-at').value || '0', 10);
+          if (loadedAt && (Date.now() - loadedAt < 2000)) {
+            Swal.fire({ icon: 'warning', title: 'Terlalu Cepat', text: 'Mohon tunggu sebentar.', confirmButtonColor: 'var(--accent)' });
+            return;
+          }
+
+          const submitBtn = document.getElementById('submitBtn');
+          const loadingSpinner = document.getElementById('loadingSpinner');
+          const user = document.getElementById('username').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const pass = document.getElementById('password').value;
+          if(!user || !email || !pass) return;
+
+          submitBtn.disabled = true;
+          loadingSpinner.classList.remove('d-none');
+          submitBtn.querySelector('span').innerText = 'Memproses...';
+
+          const res = await API.register(user, email, pass);
+          submitBtn.disabled = false;
+          loadingSpinner.classList.add('d-none');
+          submitBtn.querySelector('span').innerText = 'Daftar Sekarang';
+
+          const alertBox = document.getElementById('auth-alert');
+          if(res.success) {
+            alertBox.className = 'alert alert-success animate__animated animate__fadeIn';
+            alertBox.textContent = 'Pendaftaran berhasil! Mengalihkan...';
+            alertBox.classList.remove('d-none');
+            Auth.setSession(res.data, res.token);
+            setTimeout(() => { window.location.href = '/blog'; }, 1500);
+          } else {
+            alertBox.className = 'alert alert-danger animate__animated animate__shakeX';
+            alertBox.textContent = res.message || 'Pendaftaran Gagal. Silakan coba lagi.';
+            alertBox.classList.remove('d-none');
+          }
+        });
+      });
+    </script>
+  </Fragment>
+</BlogLayout>

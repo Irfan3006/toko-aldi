@@ -1,0 +1,174 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { BLOG_CONFIG } from '../../blog-config.js';
+
+export const prerender = false;
+
+const defaultCategories = [
+  "Web Development",
+  "Cybersecurity",
+  "Data Scraping",
+  "Python Automation",
+  "SEO & AI Optimization",
+  "Web Pentest",
+  "Cloud & DevOps"
+];
+
+let serverCategoryCounts: Record<string, number> = {};
+let allCategories: { name: string; count: number }[] = [];
+
+try {
+  const res = await fetch(`${BLOG_CONFIG.scriptUrl}?action=get_posts&_t=${Date.now()}`);
+  const json = await res.json();
+  const catMap = new Map<string, number>();
+
+  defaultCategories.forEach(c => catMap.set(c, 0));
+
+  if (json.success && Array.isArray(json.data)) {
+    json.data.forEach((p: any) => {
+      if (p.category) {
+        catMap.set(p.category, (catMap.get(p.category) || 0) + 1);
+      }
+    });
+  }
+
+  allCategories = Array.from(catMap.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+} catch (e) {
+  console.error("Error loading categories on server:", e);
+  allCategories = defaultCategories.map(name => ({ name, count: 0 }));
+}
+---
+<BlogLayout title="Kategori Artikel - Sibra Tech Blog" canonical={`${BLOG_CONFIG.siteUrl}/blog/categories`}>
+  <Fragment slot="head">
+    <title>Kategori Artikel - Sibra Tech Blog</title>
+    <style is:inline>
+      .category-card {
+        background: var(--card-bg);
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        padding: 2rem;
+        text-align: center;
+        transition: var(--transition);
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .category-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-10px);
+        background: rgba(37, 99, 235, 0.05);
+      }
+      .category-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(37, 99, 235, 0.1);
+        color: var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </Fragment>
+
+  <main class="container py-5 mt-5">
+    <div class="row justify-content-center mb-5" data-aos="fade-up">
+      <div class="col-lg-8 text-center">
+        <h1 class="display-4 fw-bold mb-3">Eksplorasi <span class="text-primary">Kategori</span></h1>
+        <p class="text-muted lead mb-4">Temukan artikel berdasarkan kategori topik yang menarik bagi Anda.</p>
+        
+        <div class="input-group shadow-sm mx-auto" style="max-width: 500px;">
+          <span class="input-group-text border-end-0 bg-transparent"><i class="bi bi-search"></i></span>
+          <input type="text" id="categorySearch" class="form-control border-start-0 ps-0 py-3" placeholder="Cari kategori...">
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4" id="categories-grid">
+      {allCategories.map((cat, index) => (
+        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay={(index % 4) * 50}>
+          <a href={`/blog/explore?category=${encodeURIComponent(cat.name)}`} class="text-decoration-none color-inherit d-block h-100">
+            <div class="category-card">
+              <div class="category-icon">
+                <i class="bi bi-tag"></i>
+              </div>
+              <h5 class="fw-bold mb-1 text-headline" style="font-size: 1rem;">{cat.name}</h5>
+              <p class="text-muted small mb-0">{cat.count} Artikel</p>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+  </main>
+
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/categories.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const grid = document.getElementById('categories-grid');
+        const searchInput = document.getElementById('categorySearch');
+        if (!searchInput || !grid) return;
+
+        let allUniqueCats = [...new Set(BLOG_CATEGORIES)];
+        let categoryCounts = {};
+
+        try {
+          const res = await API.getPosts();
+          if (res.success && Array.isArray(res.data)) {
+            res.data.forEach(p => {
+              if (p.category) {
+                categoryCounts[p.category] = (categoryCounts[p.category] || 0) + 1;
+                if (!allUniqueCats.includes(p.category)) {
+                  allUniqueCats.push(p.category);
+                }
+              }
+            });
+          }
+        } catch (err) {
+          console.error("Failed to load category counts:", err);
+        }
+
+        allUniqueCats.sort((a, b) => {
+          const countA = categoryCounts[a] || 0;
+          const countB = categoryCounts[b] || 0;
+          if (countB !== countA) return countB - countA;
+          return a.localeCompare(b);
+        });
+
+        function renderCategories(cats) {
+          if (cats.length === 0) {
+            grid.innerHTML = '<div class="col-12 text-center py-5 text-muted">Tidak menemukan kategori tersebut.</div>';
+            return;
+          }
+
+          grid.innerHTML = cats.map((cat, index) => `
+            <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="${(index % 4) * 50}">
+              <a href="/blog/explore?category=${encodeURIComponent(cat)}" class="text-decoration-none color-inherit d-block h-100">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-tag"></i>
+                  </div>
+                  <h5 class="fw-bold mb-1 text-headline" style="font-size: 1rem;">${escapeHTML(cat)}</h5>
+                  <p class="text-muted small mb-0">${categoryCounts[cat] || 0} Artikel</p>
+                </div>
+              </a>
+            </div>
+          `).join('');
+        }
+
+        searchInput.addEventListener('input', debounce((e) => {
+          const query = e.target.value.toLowerCase();
+          const filtered = allUniqueCats.filter(cat => cat.toLowerCase().includes(query));
+          renderCategories(filtered);
+        }, 250));
+      });
+    </script>
+  </Fragment>
+</BlogLayout>

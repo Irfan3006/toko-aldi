@@ -1,0 +1,147 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+---
+<BlogLayout noindex={true}>
+  <Fragment slot="head">
+    <title>Edit Post - Sibra Tech Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script is:inline src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/turndown@7.1.2/dist/turndown.js"></script>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style is:inline>
+      .editor-container { max-width: 800px; margin: 0 auto; }
+    </style>
+  </Fragment>
+
+  <main class="container my-5 py-5 min-vh-80 editor-container">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4 p-md-5">
+        <h2 class="fw-bold mb-4">Edit Postingan</h2>
+        
+        <form id="editPostForm" style="display: none;" novalidate>
+          <div class="mb-4">
+            <label class="form-label fw-500">Judul Postingan</label>
+            <input type="text" class="form-control form-control-lg" id="title" required>
+          </div>
+          
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <label class="form-label fw-500">Kategori</label>
+              <select class="form-select" id="category" required>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-500">URL Gambar Thumbnail</label>
+              <input type="url" class="form-control" id="thumbnail">
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label fw-500">Konten (Markdown)</label>
+            <textarea id="contentEditor"></textarea>
+          </div>
+
+          <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+            <a href="javascript:history.back()" class="btn btn-outline-secondary px-4">Batal</a>
+            <button type="submit" class="btn btn-primary px-4">Update Postingan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/categories.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', async () => {
+        Auth.requireAdmin();
+        const user = Auth.getSession();
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        if (!postId) {
+          window.location.href = '/blog';
+          return;
+        }
+
+        let simplemde;
+
+        const res = await API.getPostById(postId);
+        if (res.success) {
+          const post = res.data.find(p => p.id === postId);
+          
+          if (post) {
+            if (post.author_name !== user.username && user.role !== 'admin') {
+              showToast('error', 'Unauthorized', 'Anda tidak diizinkan mengubah postingan ini');
+              setTimeout(() => window.location.href = '/blog', 1500);
+              return;
+            }
+
+            populateCategorySelect('category', post.category);
+            document.getElementById('title').value = post.title;
+            document.getElementById('thumbnail').value = post.thumbnail || '';
+            
+            const turndownService = new TurndownService();
+            const markdownContent = turndownService.turndown(post.content);
+
+            document.getElementById('contentEditor').value = markdownContent;
+
+            document.getElementById('editPostForm').style.display = 'block';
+            
+            simplemde = new SimpleMDE({ 
+              element: document.getElementById("contentEditor"),
+              spellChecker: false
+            });
+          } else {
+            showToast('error', 'Not Found', 'Postingan tidak ditemukan');
+            window.location.href = '/blog';
+          }
+        }
+
+        document.getElementById('editPostForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const title = document.getElementById('title').value;
+          const category = document.getElementById('category').value;
+          const thumbnail = document.getElementById('thumbnail').value;
+          const markdownContent = simplemde.value();
+          
+          if (!title || !title.trim()) {
+            showToast('error', 'Error', 'Judul postingan tidak boleh kosong');
+            return;
+          }
+          if (!category) {
+            showToast('error', 'Error', 'Kategori tidak boleh kosong');
+            return;
+          }
+          if (!markdownContent || !markdownContent.trim()) {
+            showToast('error', 'Error', 'Konten postingan tidak boleh kosong');
+            return;
+          }
+
+          const htmlContent = marked.parse(markdownContent);
+
+          const postData = {
+            id: postId,
+            title: title,
+            category: category,
+            thumbnail: thumbnail,
+            content: htmlContent
+          };
+
+          const updateRes = await API.updatePost(postData);
+          if (updateRes.success) {
+            showToast('success', 'Post Updated!');
+            setTimeout(() => {
+              window.location.href = `/blog/post/${updateRes.data.slug}`;
+            }, 1500);
+          } else {
+            showToast('error', 'Update Failed', updateRes.message);
+          }
+        });
+      });
+    </script>
+  </Fragment>
+</BlogLayout>
