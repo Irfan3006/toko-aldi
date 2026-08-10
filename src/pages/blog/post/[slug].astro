@@ -228,7 +228,7 @@ const jsonLdGraph = {
           "@type": "ImageObject",
           url: post.author_avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author_name)}&size=128`,
         },
-        description: post.author_bio || "Konten Kreator di Sibra Tech Blog",
+        description: post.author_bio || "Tim Toko Aldi Sembako Jogja",
       },
       publisher: {
         "@id": `https://${host}/#organization`,
@@ -309,7 +309,7 @@ shuffle(others);
 
 let recommended = [...related, ...others].slice(0, 3);
 ---
-<BlogLayout title={`${postTitle} - Sibra Tech Blog`} description={plainContent} keywords={keywords} canonical={canonicalUrl}>
+<BlogLayout title={`${postTitle} - Aldi Artikel`} description={plainContent} keywords={keywords} canonical={canonicalUrl}>
   <Fragment slot="head">
     <!-- Article Metadata -->
     <meta property="article:published_time" content={datePublishedIso} />
@@ -726,11 +726,11 @@ let recommended = [...related, ...others].slice(0, 3);
         <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-4">
           <div class="text-start flex-grow-1">
             <span class="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2 rounded-pill fs-6 fw-semibold">
-              <i class="bi bi-shield-check me-1"></i> Solusi IT & Keamanan Terpercaya
+              <i class="bi bi-shop me-1"></i> Minimarket Sembako Terlengkap & Murah
             </span>
-            <h4 class="fw-bold mb-2 text-headline" style="font-size: 1.35rem; line-height: 1.35;">Butuh Data, Web Custom, atau Audit Keamanan?</h4>
+            <h4 class="fw-bold mb-2 text-headline" style="font-size: 1.35rem; line-height: 1.35;">Ingin Tanya Stok, Promo, atau Order Sembako?</h4>
             <p class="text-muted mb-0" style="font-size: 0.925rem; line-height: 1.6;">
-              Diskusikan proyek Anda secara langsung dengan tim ahli <strong class="text-primary">Sibra Tech</strong>. Kami bantu merancang solusi data scraping, web development, dan security yang cepat, aman, dan transparan.
+              Diskusikan kebutuhan Anda secara langsung dengan tim <strong class="text-primary">Toko Aldi Sembako Jogja</strong>. Kami bantu informasi stok, update promo harian, dan pemesanan sembako secara cepat dan ramah.
             </p>
           </div>
           <div class="flex-shrink-0 text-center text-lg-end">
@@ -741,7 +741,7 @@ let recommended = [...related, ...others].slice(0, 3);
               class="btn btn-whatsapp-cta btn-lg rounded-pill text-decoration-none d-inline-flex align-items-center justify-content-center gap-2"
             >
               <i class="bi bi-whatsapp"></i>
-              <span>Konsultasi Gratis via WA</span>
+              <span>Tanya & Order via WA</span>
             </a>
           </div>
         </div>
@@ -758,7 +758,7 @@ let recommended = [...related, ...others].slice(0, 3);
       />
       <div>
         <h5 class="fw-bold mb-1 fs-4" id="author-name">{post.author_name}</h5>
-        <p class="text-muted mb-2" style="font-size: 1rem;" id="author-bio">{post.author_bio || "Konten Kreator di Sibra Tech Blog"}</p>
+        <p class="text-muted mb-2" style="font-size: 1rem;" id="author-bio">{post.author_bio || "Tim Toko Aldi Sembako Jogja"}</p>
       </div>
     </div>
 
