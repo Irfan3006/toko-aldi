@@ -251,11 +251,15 @@ footer a:hover {
     height: 50px;
     display: none;
     border: none;
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
     box-shadow: var(--shadow-md);
     transition: var(--transition);
 }
 
 #backToTop:hover {
+    background-color: var(--secondary-color) !important;
+    color: var(--white) !important;
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
