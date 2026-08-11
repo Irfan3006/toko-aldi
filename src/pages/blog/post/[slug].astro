@@ -77,14 +77,14 @@ if (post.content) {
   readingTime = Math.ceil(wordCount / 225) || 1;
 }
 
-const host = Astro.url.host || "toko-aldi.vercel.app";
+const host = Astro.url.host || "tokoaldi.biz.id";
 const defaultThumb = `https://${host}/assets/images/favicon.svg`;
 let postThumbnail = defaultThumb;
 if (post.thumbnail) {
   postThumbnail = post.thumbnail.startsWith("http") ? post.thumbnail : `https://${host}${post.thumbnail}`;
 }
 
-const canonicalUrl = `https://toko-aldi.vercel.app/blog/post/${slug}`;
+const canonicalUrl = `https://tokoaldi.biz.id/blog/post/${slug}`;
 const waMessage = `Halo Toko Aldi, saya telah membaca artikel "${postTitle}" di Aldi Artikel dan ingin informasi lebih lanjut.`;
 const waLink = `https://wa.me/6281233974201?text=${encodeURIComponent(waMessage)}`;
 const imageType = getImageType(postThumbnail);

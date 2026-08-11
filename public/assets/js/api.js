@@ -149,12 +149,14 @@ class API {
 
   static async pingIndexNow(slug) {
     if (!slug) return;
-    const url = `https://sibra.store/blog/post/${slug}`;
+    const host = window.location.hostname || "tokoaldi.biz.id";
+    const origin = window.location.origin || "https://tokoaldi.biz.id";
+    const url = `${origin}/blog/post/${slug}`;
     const key = "feb31c37bdb84d9faa88adb647f0a6c1";
     const payload = {
-      host: "sibra.store",
+      host: host,
       key: key,
-      keyLocation: `https://sibra.store/${key}.txt`,
+      keyLocation: `${origin}/${key}.txt`,
       urlList: [url]
     };
 
@@ -283,44 +285,44 @@ function showToast(icon, title, text = '') {
 
 class Auth {
   static setSession(user, token) {
-    localStorage.setItem('sibra_blog_user', JSON.stringify(user));
-    if (token) localStorage.setItem('sibra_blog_token', token);
+    localStorage.setItem('toko_aldi_blog_user', JSON.stringify(user));
+    if (token) localStorage.setItem('toko_aldi_blog_token', token);
   }
 
   static getSession() {
     try {
-      const data = localStorage.getItem('sibra_blog_user');
+      const data = localStorage.getItem('toko_aldi_blog_user');
       if (!data) return null;
       const parsed = JSON.parse(data);
       if (!parsed || !parsed.id || !parsed.username || !parsed.role) {
-        localStorage.removeItem('sibra_blog_user');
+        localStorage.removeItem('toko_aldi_blog_user');
         return null;
       }
       const role = parsed.role.toString().trim().toLowerCase();
       if (!['user', 'admin'].includes(role)) {
-        localStorage.removeItem('sibra_blog_user');
+        localStorage.removeItem('toko_aldi_blog_user');
         return null;
       }
       parsed.role = role;
       return parsed;
     } catch (e) {
-      localStorage.removeItem('sibra_blog_user');
+      localStorage.removeItem('toko_aldi_blog_user');
       return null;
     }
   }
 
   static clearSession() {
-    const token = localStorage.getItem('sibra_blog_token');
+    const token = localStorage.getItem('toko_aldi_blog_token');
     if (token) {
       try { API.logout(); } catch (e) { }
     }
-    localStorage.removeItem('sibra_blog_user');
-    localStorage.removeItem('sibra_blog_token');
+    localStorage.removeItem('toko_aldi_blog_user');
+    localStorage.removeItem('toko_aldi_blog_token');
     window.location.href = '/blog/login';
   }
 
   static getToken() {
-    return localStorage.getItem('sibra_blog_token') || null;
+    return localStorage.getItem('toko_aldi_blog_token') || null;
   }
 
   static isLoggedIn() {
