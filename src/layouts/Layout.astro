@@ -13,7 +13,15 @@ const {
   canonical = "https://tokoaldi.biz.id/"
 } = Astro.props;
 
-const schemaData = {
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Toko Aldi",
+  "alternateName": ["Toko Aldi Sembako", "Toko Aldi Sembako Jogja", "Toko Aldi Jogja"],
+  "url": "https://tokoaldi.biz.id/"
+};
+
+const storeSchema = {
   "@context": "https://schema.org",
   "@type": "GroceryStore",
   "name": "Toko Aldi Sembako Jogja",
@@ -75,17 +83,17 @@ const schemaData = {
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:title" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap & Murah" />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="https://tokoaldi.biz.id/assets/images/og-image.jpg" />
     <meta property="og:image:alt" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap di Banguntapan" />
     <meta property="og:locale" content="id_ID" />
-    <meta property="og:site_name" content="Toko Aldi Sembako Jogja" />
+    <meta property="og:site_name" content="Toko Aldi" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonical} />
-    <meta name="twitter:title" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap & Murah" />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://tokoaldi.biz.id/assets/images/og-image.jpg" />
     <meta name="twitter:image:alt" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap di Banguntapan" />
@@ -129,8 +137,8 @@ const schemaData = {
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-    <!-- JSON-LD Structured Data for LocalBusiness -->
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+    <!-- JSON-LD Structured Data for WebSite & LocalBusiness -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify([websiteSchema, storeSchema])} />
   </head>
   <body>
     <slot />

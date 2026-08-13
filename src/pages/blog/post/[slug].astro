@@ -498,12 +498,12 @@ let recommended = [...related, ...others].slice(0, 3);
         width: 45px;
         height: 45px;
         border-radius: 14px;
-        background: rgba(27, 32, 56, 0.8);
+        background: #ffffff;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        color: var(--accent);
-        border: 1px solid var(--stroke);
-        box-shadow: var(--shadow-soft);
+        color: #2D9C7F;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 0;
         line-height: 1;
@@ -515,10 +515,10 @@ let recommended = [...related, ...others].slice(0, 3);
       }
       #btn-back-to-top:hover {
         transform: translateY(-5px);
-        background: var(--accent);
-        color: var(--background);
-        border-color: var(--accent);
-        box-shadow: 0 10px 20px rgba(79, 195, 247, 0.3);
+        background: #2D9C7F;
+        color: #ffffff;
+        border-color: #2D9C7F;
+        box-shadow: 0 10px 24px rgba(45, 156, 127, 0.35);
       }
       .breadcrumb {
         display: flex !important;
@@ -744,6 +744,47 @@ let recommended = [...related, ...others].slice(0, 3);
               <span>Tanya & Order via WA</span>
             </a>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Maps Card Section After WhatsApp CTA -->
+    <div class="maps-post-card mx-auto mt-4" style="max-width: 800px;">
+      <div class="cta-content p-4 p-md-4">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
+          <div>
+            <span class="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2 rounded-pill fs-6 fw-semibold">
+              <i class="bi bi-geo-alt-fill me-1"></i> Lokasi Toko Kami
+            </span>
+            <h4 class="fw-bold mb-1 text-headline" style="font-size: 1.25rem;">Toko Aldi Sembako Jogja</h4>
+            <p class="text-muted mb-0" style="font-size: 0.9rem;">
+              Jalan Janti Gang Harjuna No. 45, Banguntapan, Bantul, D.I. Yogyakarta 55198
+            </p>
+          </div>
+          <div>
+            <a 
+              href="https://maps.google.com/?q=Toko+Aldi+Sembako+Jogja" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn btn-outline-primary btn-sm rounded-pill px-3 py-2 text-decoration-none d-inline-flex align-items-center gap-1"
+            >
+              <i class="bi bi-box-arrow-up-right me-1"></i> Buka di Google Maps
+            </a>
+          </div>
+        </div>
+        <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm border border-secondary border-opacity-10">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4689.035910129866!2d110.408942!3d-7.790221!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59e3dce55305%3A0x3be7989248a78fc7!2sToko%20Aldi%20Sembako!5e1!3m2!1sid!2sid!4v1786350063727!5m2!1sid!2sid"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            title="Lokasi Toko Aldi Sembako di Google Maps"
+            aria-label="Peta lokasi Toko Aldi Sembako"
+          >
+          </iframe>
         </div>
       </div>
     </div>
