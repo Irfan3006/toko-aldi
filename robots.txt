@@ -1,3 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /blog/admin
+Disallow: /blog/create-post
+Disallow: /blog/edit-post
+Disallow: /blog/login
+Disallow: /blog/signup
+
 Sitemap: https://tokoaldi.biz.id/sitemap.xml
+Sitemap: https://tokoaldi.biz.id/sitemap-blog.xml
+

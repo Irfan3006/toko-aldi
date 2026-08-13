@@ -86,6 +86,8 @@ const storeSchema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="https://tokoaldi.biz.id/assets/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap di Banguntapan" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content="Toko Aldi" />
@@ -99,8 +101,11 @@ const storeSchema = {
     <meta name="twitter:image:alt" content="Toko Aldi Sembako Jogja - Minimarket Sembako Terlengkap di Banguntapan" />
 
     <link rel="canonical" href={canonical} />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     <meta name="theme-color" content="#2D9C7F" />
+
+    <!-- Hero Image Preload for Core Web Vitals (LCP Optimization) -->
+    <link rel="preload" as="image" href="/assets/images/hero-illustration.png" type="image/png" fetchpriority="high" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
@@ -128,14 +133,14 @@ const storeSchema = {
       crossorigin="anonymous"
     />
 
-    <!-- AOS (Animate On Scroll) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <!-- AOS (Animate On Scroll) Non-blocking -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+
+    <!-- Animate.css Non-blocking -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'" />
 
     <!-- JSON-LD Structured Data for WebSite & LocalBusiness -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify([websiteSchema, storeSchema])} />
