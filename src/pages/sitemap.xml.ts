@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 // @ts-ignore
 import { BLOG_CONFIG } from '../blog-config.js';
 
-export const prerender = false;
+export const prerender = true;
 
 export const GET: APIRoute = async () => {
   const siteUrl = BLOG_CONFIG.siteUrl.replace(/\/$/, '');

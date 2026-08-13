@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 // @ts-ignore
 import { BLOG_CONFIG } from '../blog-config.js';
 
-export const prerender = false;
+export const prerender = true;
 
 function escapeXml(str: string): string {
   if (!str) return '';
