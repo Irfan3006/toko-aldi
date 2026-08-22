@@ -461,6 +461,30 @@ let recommended = [...related, ...others].slice(0, 3);
         vertical-align: middle;
         line-height: 1.6;
       }
+      .post-content th[align="right"],
+      .post-content td[align="right"],
+      .post-content th[style*="text-align: right"],
+      .post-content td[style*="text-align: right"],
+      .post-content th[style*="text-align:right"],
+      .post-content td[style*="text-align:right"] {
+        text-align: right !important;
+      }
+      .post-content th[align="center"],
+      .post-content td[align="center"],
+      .post-content th[style*="text-align: center"],
+      .post-content td[style*="text-align: center"],
+      .post-content th[style*="text-align:center"],
+      .post-content td[style*="text-align:center"] {
+        text-align: center !important;
+      }
+      .post-content th[align="left"],
+      .post-content td[align="left"],
+      .post-content th[style*="text-align: left"],
+      .post-content td[style*="text-align: left"],
+      .post-content th[style*="text-align:left"],
+      .post-content td[style*="text-align:left"] {
+        text-align: left !important;
+      }
       .post-content tbody tr:last-child td {
         border-bottom: none;
       }
