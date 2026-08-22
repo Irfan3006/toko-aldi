@@ -16,6 +16,7 @@ const {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://tokoaldi.biz.id/#website",
   "name": "Toko Aldi",
   "alternateName": ["Toko Aldi Sembako", "Toko Aldi Sembako Jogja", "Toko Aldi Jogja"],
   "url": "https://tokoaldi.biz.id/"
@@ -23,41 +24,149 @@ const websiteSchema = {
 
 const storeSchema = {
   "@context": "https://schema.org",
-  "@type": "GroceryStore",
+  "@type": ["GroceryStore", "ConvenienceStore", "LocalBusiness"],
+  "@id": "https://tokoaldi.biz.id/#localbusiness",
   "name": "Toko Aldi Sembako Jogja",
-  "alternateName": ["Toko Aldi Sembako", "Toko Aldi Jogja", "Minimarket Aldi Sembako Jogja"],
-  "image": "https://tokoaldi.biz.id/assets/images/og-image.jpg",
+  "alternateName": [
+    "Toko Aldi",
+    "Toko Aldi Sembako",
+    "Toko Aldi Jogja",
+    "Minimarket Aldi Sembako Jogja"
+  ],
+  "image": [
+    "https://tokoaldi.biz.id/assets/images/og-image.jpg",
+    "https://tokoaldi.biz.id/assets/images/hero-illustration.png"
+  ],
+  "logo": "https://tokoaldi.biz.id/assets/images/favicon.svg",
   "description": description,
+  "url": canonical,
+  "telephone": "+62 812-3397-4201",
+  "priceRange": "Rp",
+  "currenciesAccepted": "IDR",
+  "paymentAccepted": "Cash, QRIS",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Jalan Janti Gang Harjuna No. 45",
-    "addressLocality": "Banguntapan, Bantul",
+    "addressLocality": "Banguntapan",
     "addressRegion": "Daerah Istimewa Yogyakarta",
     "postalCode": "55198",
     "addressCountry": "ID"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": -7.79021,
-    "longitude": 110.408922
+    "latitude": -7.790221,
+    "longitude": 110.408942
   },
-  "url": canonical,
-  "telephone": "+62 812-3397-4201",
-  "priceRange": "$$",
-  "paymentAccepted": "Cash, QRIS",
+  "hasMap": "https://www.google.com/maps?cid=4316597793444007879",
+  "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 06:30-23:00",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
       "opens": "06:30",
       "closes": "23:00"
     }
   ],
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "Banguntapan"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Bantul"
+    },
+    {
+      "@type": "City",
+      "name": "Yogyakarta"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Daerah Istimewa Yogyakarta"
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+62 812-3397-4201",
+    "contactType": "customer service",
+    "areaServed": "ID",
+    "availableLanguage": ["Indonesian", "Javanese"]
+  },
+  "sameAs": [
+    "https://wa.me/6281233974201"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Katalog Sembako & Kebutuhan Pokok",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "Bahan Pokok & Sembako",
+        "description": "Beras, Minyak Goreng, Gula Pasir, Telur Ayam Segar, Tepung Terigu"
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Kebutuhan Rumah Tangga",
+        "description": "Mie Instan, Susu, Bumbu Dapur, Gas LPG, Galon Air Mineral"
+      }
+    ]
+  },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "128"
-  }
+    "reviewCount": "128",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "KHM Sofwan"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Itu toko menyediakan khas sembako dan harga sangat miring disamping pelayanan ramah"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Buhadi Yudiahmadi"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Nice, dengan pelayanan yang ramah juga tersedia berbagai macam kesediaan Sembako MANTAP JIWA"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Irfan Syarifudin"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Toko sembako yang lengkap dan strategis, pelayanannya sangat memuaskan!"
+    }
+  ]
 };
 ---
 
