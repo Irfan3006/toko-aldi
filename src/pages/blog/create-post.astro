@@ -61,7 +61,10 @@ import BlogLayout from '../../layouts/BlogLayout.astro';
         const simplemde = new SimpleMDE({ 
           element: document.getElementById("contentEditor"),
           spellChecker: false,
-          placeholder: "Tulis cerita Anda di sini..."
+          placeholder: "Tulis cerita Anda di sini...",
+          previewRender: function(plainText) {
+            return marked.parse(plainText);
+          }
         });
 
         document.getElementById('createPostForm').addEventListener('submit', async (e) => {

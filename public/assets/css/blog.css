@@ -419,6 +419,111 @@ footer {
   color: var(--headline);
 }
 
+/* Markdown Tables Styling */
+.post-content .table-responsive,
+.table-markdown-wrapper {
+  margin: 2.2rem 0;
+  border-radius: 14px;
+  border: 1px solid var(--stroke) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  overflow-x: auto;
+  background: #ffffff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.post-content table,
+.table-markdown,
+.editor-preview table,
+.editor-preview-side table {
+  width: 100%;
+  margin-bottom: 0;
+  border-collapse: collapse;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--paragraph);
+  background: #ffffff;
+}
+
+.post-content thead,
+.editor-preview thead,
+.editor-preview-side thead {
+  background: #f8fafc;
+}
+
+.post-content th,
+.table-markdown th,
+.editor-preview table th,
+.editor-preview-side table th {
+  background: #f8fafc;
+  color: var(--headline);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1.1rem 1.35rem;
+  border-bottom: 2px solid var(--accent) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.post-content td,
+.table-markdown td,
+.editor-preview table td,
+.editor-preview-side table td {
+  padding: 1rem 1.35rem;
+  border-bottom: 1px solid var(--stroke) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  vertical-align: middle;
+  line-height: 1.6;
+}
+
+.post-content tbody tr:last-child td,
+.table-markdown tbody tr:last-child td,
+.editor-preview table tbody tr:last-child td,
+.editor-preview-side table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+.post-content tbody tr:nth-child(even),
+.table-markdown tbody tr:nth-child(even),
+.editor-preview table tbody tr:nth-child(even),
+.editor-preview-side table tbody tr:nth-child(even) {
+  background-color: #fbfcfd;
+}
+
+.post-content tbody tr:hover,
+.table-markdown tbody tr:hover,
+.editor-preview table tbody tr:hover,
+.editor-preview-side table tbody tr:hover {
+  background-color: rgba(45, 156, 127, 0.04);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.post-content td:first-child,
+.table-markdown td:first-child,
+.editor-preview table td:first-child,
+.editor-preview-side table td:first-child {
+  font-weight: 600;
+  color: var(--headline);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .post-content th,
+  .post-content td,
+  .table-markdown th,
+  .table-markdown td {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
 .profile-header {
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
   border: 1px solid var(--stroke) !important;
