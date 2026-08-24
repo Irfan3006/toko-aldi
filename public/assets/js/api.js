@@ -1,4 +1,4 @@
-const SCRIPT_URL = window.BLOG_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz0hGZcNGnDyhuXHbsBYSz-T5pVwAdXSPsR5scvP_ymd9IRx_Fq7tdw4ba6NE7CYKcF/exec'
+const SCRIPT_URL = window.BLOG_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbzYVX-o84-C5Smy2jk7VQtfL3ljuKfcYUDCvNazkc5JVDGaX__DchVFch2bnZWXLDLJ/exec'
 function sanitizeHTML(html) {
   const doc = new DOMParser().parseFromString(html, 'text/html');
   const dangerousTags = ['script', 'iframe', 'object', 'embed', 'form', 'input', 'textarea', 'select', 'button', 'link', 'style', 'meta', 'base', 'applet'];
@@ -152,7 +152,7 @@ class API {
     const host = window.location.hostname || "tokoaldi.biz.id";
     const origin = window.location.origin || "https://tokoaldi.biz.id";
     const url = `${origin}/blog/post/${slug}`;
-    const key = "feb31c37bdb84d9faa88adb647f0a6c1";
+    const key = "f11685ea1fd94c27802c1a99628e3be0";
     const payload = {
       host: host,
       key: key,
