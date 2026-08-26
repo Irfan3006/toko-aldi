@@ -152,7 +152,7 @@ class API {
     const host = window.location.hostname || "tokoaldi.biz.id";
     const origin = window.location.origin || "https://tokoaldi.biz.id";
     const url = `${origin}/blog/post/${slug}`;
-    const key = "f11685ea1fd94c27802c1a99628e3be0";
+    const key = "0d74f17c59774a55974154ed61533f2a";
     const payload = {
       host: host,
       key: key,
