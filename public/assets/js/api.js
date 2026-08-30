@@ -558,14 +558,20 @@ function renderFooter() {
   return `
   <footer class="py-5 mt-5 border-top border-secondary border-opacity-10">
     <div class="container text-center">
-      <div class="d-flex justify-content-center flex-wrap gap-3 mb-3" style="font-size: 0.85rem;">
+      <div class="d-flex justify-content-center flex-wrap gap-3 mb-2" style="font-size: 0.85rem;">
         <a href="/" class="text-muted text-decoration-none hover-accent">Toko Aldi Utama</a>
         <span class="text-muted opacity-25">|</span>
         <a href="/blog" class="text-muted text-decoration-none hover-accent">Aldi Artikel</a>
         <span class="text-muted opacity-25">|</span>
-        <a href="/#alamat" class="text-muted text-decoration-none hover-accent">Lokasi Banguntapan, Bantul</a>
+        <a href="/kontak" class="text-muted text-decoration-none hover-accent">Hubungi Kami</a>
+        <span class="text-muted opacity-25">|</span>
+        <a href="/privacy-policy" class="text-muted text-decoration-none hover-accent">Kebijakan Privasi</a>
+        <span class="text-muted opacity-25">|</span>
+        <a href="/terms" class="text-muted text-decoration-none hover-accent">Syarat & Ketentuan</a>
+        <span class="text-muted opacity-25">|</span>
+        <a href="/disclaimer" class="text-muted text-decoration-none hover-accent">Disclaimer</a>
       </div>
-      <p class="text-muted mb-2" style="font-size: 0.9rem;">&copy; ${new Date().getFullYear()} Aldi Artikel - Toko Aldi Minimarket Jogja Terlengkap. Semua Hak Dilindungi.</p>
+      <p class="text-muted mb-0" style="font-size: 0.85rem;">&copy; ${new Date().getFullYear()} Aldi Artikel - Toko Aldi Minimarket Jogja Terlengkap. Semua Hak Dilindungi.</p>
     </div>
   </footer>
   `;

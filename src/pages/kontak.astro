@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
+
+const title = "Hubungi Kami (Contact Us) - Toko Aldi Sembako Jogja";
+const description = "Hubungi Toko Aldi Sembako Jogja via WhatsApp, Telepon, atau kunjungi toko kami langsung di Banguntapan, Bantul, Yogyakarta.";
+---
+
+<Layout title={title} description={description} canonical="https://tokoaldi.biz.id/kontak">
+  <Navbar />
+
+  <div class="legal-page-header py-5 bg-light border-bottom" style="margin-top: 56px;">
+    <div class="container py-4 text-center">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center mb-2">
+          <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-primary">Beranda</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Hubungi Kami</li>
+        </ol>
+      </nav>
+      <h1 class="fw-bold text-dark mb-2">Hubungi Kami (Contact Us)</h1>
+      <p class="text-muted mb-0">Kami siap melayani kebutuhan sembako & pertanyaan Anda setiap hari</p>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-5">
+        <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+          <h3 class="h4 fw-bold text-dark mb-4"><i class="bi bi-geo-alt-fill text-primary me-2"></i>Informasi Kontak</h3>
+          
+          <div class="d-flex align-items-start gap-3 mb-4">
+            <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 fs-4">
+              <i class="bi bi-shop"></i>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-1">Alamat Toko</h6>
+              <p class="text-muted small mb-0">Jalan Janti Gang Harjuna No. 45, Banguntapan, Kec. Banguntapan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55198</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start gap-3 mb-4">
+            <div class="bg-success bg-opacity-10 text-success rounded-3 p-3 fs-4">
+              <i class="bi bi-whatsapp"></i>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-1">WhatsApp & Telepon</h6>
+              <p class="text-muted small mb-2">+62 812-3397-4201</p>
+              <a href="https://wa.me/6281233974201" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-sm">
+                <i class="bi bi-whatsapp me-1"></i> Chat via WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start gap-3 mb-4">
+            <div class="bg-warning bg-opacity-10 text-warning rounded-3 p-3 fs-4">
+              <i class="bi bi-clock-history"></i>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-1">Jam Operasional</h6>
+              <p class="text-muted small mb-0">Senin - Minggu: <strong>06.30 - 23.00 WIB</strong> (Buka Setiap Hari)</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start gap-3">
+            <div class="bg-info bg-opacity-10 text-info rounded-3 p-3 fs-4">
+              <i class="bi bi-credit-card-2-front"></i>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-1">Metode Pembayaran</h6>
+              <p class="text-muted small mb-0">Tunai (Cash), QRIS (GoPay, OVO, Dana, ShopeePay, BCA, Mandiri, dll)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+          <h3 class="h4 fw-bold text-dark mb-4"><i class="bi bi-map-fill text-primary me-2"></i>Lokasi Google Maps</h3>
+          <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm border mb-3">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.8847849925203!2d110.40636707588365!3d-7.790220992229569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a575604db0865%3A0x3bd59e19574efc27!2sToko%20Aldi%20Sembako!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <span class="text-muted small"><i class="bi bi-geo-fill text-danger me-1"></i>Dekat Jembatan Janti & Blok O</span>
+            <a href="https://maps.google.com/?cid=4316597793444007879" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary btn-sm">
+              <i class="bi bi-arrow-up-right-square me-1"></i> Buka di Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+  <BackToTop />
+</Layout>

@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
+
+const title = "Syarat dan Ketentuan (Terms of Service) - Toko Aldi Sembako & Aldi Artikel";
+const description = "Syarat dan Ketentuan penggunaan layanan website Toko Aldi Sembako Jogja dan portal informasi Aldi Artikel.";
+---
+
+<Layout title={title} description={description} canonical="https://tokoaldi.biz.id/terms">
+  <Navbar />
+
+  <div class="legal-page-header py-5 bg-light border-bottom" style="margin-top: 56px;">
+    <div class="container py-4 text-center">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center mb-2">
+          <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-primary">Beranda</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Syarat & Ketentuan</li>
+        </ol>
+      </nav>
+      <h1 class="fw-bold text-dark mb-2">Syarat dan Ketentuan (Terms of Service)</h1>
+      <p class="text-muted mb-0">Terakhir diperbarui: 30 Agustus 2026</p>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+          <div class="content-legal">
+            <p class="lead text-secondary">
+              Selamat datang di <strong>Toko Aldi Sembako Jogja</strong> dan portal <strong>Aldi Artikel</strong>. Dengan mengakses dan menggunakan situs web ini (<a href="https://tokoaldi.biz.id" class="text-primary text-decoration-none">https://tokoaldi.biz.id</a>), Anda setuju untuk terikat oleh Syarat dan Ketentuan berikut.
+            </p>
+
+            <hr class="my-4" />
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-check2-circle text-primary me-2"></i>1. Penerimaan Ketentuan</h3>
+            <p>
+              Dengan mengakses situs ini, Anda menyatakan bahwa Anda telah membaca, memahami, dan menyetujui untuk terikat oleh syarat dan ketentuan ini serta mematuhi semua hukum dan peraturan yang berlaku di Republik Indonesia.
+            </p>
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-file-earmark-text text-primary me-2"></i>2. Penggunaan Konten & Hak Cipta</h3>
+            <p>
+              Semua konten yang dipublikasikan di situs ini, termasuk namun tidak terbatas pada artikel, panduan, logo, gambar, dan desain adalah milik Toko Aldi Sembako Jogja dan dilindungi oleh undang-undang hak cipta. Anda dilarang untuk menyalin, mendistribusikan ulang, atau mempublikasikan ulang materi tanpa izin tertulis dari kami.
+            </p>
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-shop text-primary me-2"></i>3. Informasi Produk & Harga Sembako</h3>
+            <p>
+              Kami berusaha semaksimal mungkin untuk menyajikan informasi produk, ketersediaan stok, dan perkiraan harga sembako yang akurat. Namun, harga komoditas sembako dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya mengikuti dinamika pasar. Harga resmi dan ketersediaan aktual berlaku saat transaksi di toko fisik kami di Banguntapan, Bantul.
+            </p>
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-layout-text-window-reverse text-primary me-2"></i>4. Artikel & Interaksi Komentar</h3>
+            <p>
+              Portal Aldi Artikel menyediakan wadah informasi dan diskusi seputar kebutuhan pokok, tips belanja hemat, dan inspirasi usaha. Pengguna dilarang memposting komentar yang mengandung unsur SARA, pornografi, ujaran kebencian, spam, atau materi yang melanggar hukum.
+            </p>
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-link-45deg text-primary me-2"></i>5. Tautan ke Pihak Ketiga & Iklan</h3>
+            <p>
+              Website kami dapat memuat tautan ke situs web pihak ketiga atau iklan (seperti Google AdSense). Kami tidak bertanggung jawab atas isi, kebijakan privasi, atau praktik situs pihak ketiga tersebut.
+            </p>
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-arrow-repeat text-primary me-2"></i>6. Perubahan Syarat & Ketentuan</h3>
+            <p>
+              Toko Aldi berhak memperbarui atau mengubah Syarat dan Ketentuan ini kapan saja tanpa pemberitahuan sebelumnya. Penggunaan situs secara berkelanjutan setelah perubahan dianggap sebagai penerimaan atas perubahan tersebut.
+            </p>
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-telephone text-primary me-2"></i>7. Kontak</h3>
+            <p>
+              Untuk pertanyaan atau informasi lebih lanjut seputar Syarat dan Ketentuan ini, silakan hubungi kami melalui WhatsApp di <a href="https://wa.me/6281233974201" class="fw-semibold text-primary">+62 812-3397-4201</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+  <BackToTop />
+</Layout>

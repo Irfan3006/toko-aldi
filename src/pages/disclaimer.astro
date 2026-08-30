@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
+
+const title = "Disclaimer (Sanggahan) - Toko Aldi Sembako & Aldi Artikel";
+const description = "Disclaimer dan batasan tanggung jawab terkait informasi, ulasan, dan artikel di website Toko Aldi Sembako Jogja.";
+---
+
+<Layout title={title} description={description} canonical="https://tokoaldi.biz.id/disclaimer">
+  <Navbar />
+
+  <div class="legal-page-header py-5 bg-light border-bottom" style="margin-top: 56px;">
+    <div class="container py-4 text-center">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center mb-2">
+          <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-primary">Beranda</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Disclaimer</li>
+        </ol>
+      </nav>
+      <h1 class="fw-bold text-dark mb-2">Disclaimer (Sanggahan)</h1>
+      <p class="text-muted mb-0">Terakhir diperbarui: 30 Agustus 2026</p>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+          <div class="content-legal">
+            <p class="lead text-secondary">
+              Jika Anda memerlukan informasi lebih lanjut atau memiliki pertanyaan tentang disclaimer situs kami, jangan ragu untuk menghubungi kami.
+            </p>
+
+            <hr class="my-4" />
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-info-circle text-primary me-2"></i>1. Informasi Umum</h3>
+            <p>
+              Semua informasi di situs web ini (<a href="https://tokoaldi.biz.id" class="text-primary text-decoration-none">https://tokoaldi.biz.id</a>) dan portal <strong>Aldi Artikel</strong> diterbitkan dengan itikad baik dan untuk tujuan informasi umum serta edukasi saja.
+            </p>
+            <p>
+              Toko Aldi tidak memberikan jaminan apa pun mengenai kelengkapan, keandalan, dan keakuratan informasi ini. Segala tindakan yang Anda ambil atas informasi yang Anda temukan di situs web ini adalah risiko Anda sendiri. Toko Aldi tidak bertanggung jawab atas kerugian dan/atau kerusakan sehubungan dengan penggunaan situs web kami.
+            </p>
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-box-arrow-up-right text-primary me-2"></i>2. Tautan Keluar (External Links)</h3>
+            <p>
+              Dari situs web kami, Anda dapat mengunjungi situs web lain dengan mengikuti hyperlink ke situs eksternal tersebut. Meskipun kami berusaha keras untuk hanya menyediakan tautan berkualitas ke situs web yang bermanfaat dan etis, kami tidak memiliki kendali atas konten dan sifat situs-situs tersebut. Tautan ke situs web lain bukan merupakan rekomendasi mutlak untuk semua konten yang ditemukan di situs-situs tersebut.
+            </p>
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-badge-ad text-primary me-2"></i>3. Transparansi Iklan & Sponsor</h3>
+            <p>
+              Situs ini dapat menampilkan iklan komersial, termasuk iklan terprogram dari <strong>Google AdSense</strong> atau kemitraan sponsor. Penayangan iklan ini tidak berarti kami secara otomatis mendukung atau menjamin produk/layanan yang diiklankan oleh pihak ketiga.
+            </p>
+
+            <h3 class="h4 fw-bold text-dark mt-4 mb-3"><i class="bi bi-hand-thumbs-up text-primary me-2"></i>4. Persetujuan</h3>
+            <p>
+              Dengan menggunakan situs web kami, Anda dengan ini menyetujui disclaimer kami dan menyetujui ketentuan-ketentuannya.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+  <BackToTop />
+</Layout>
