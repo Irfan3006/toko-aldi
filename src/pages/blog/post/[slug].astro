@@ -4,23 +4,85 @@ import { BLOG_CONFIG } from "../../../blog-config.js";
 
 export const prerender = false;
 
-const { slug } = Astro.params;
-
-let post = null;
-let allPosts = [];
-
+const rawSlug = (Astro.params.slug || "").trim();
+let slug = rawSlug;
 try {
-  const apiRes = await fetch(`${BLOG_CONFIG.scriptUrl}?action=get_posts&slug=${encodeURIComponent(slug || "")}&_t=${Date.now()}`);
-  const result = await apiRes.json();
-  if (result.success && Array.isArray(result.data)) {
-    allPosts = result.data;
-    post = allPosts.find((p: any) => p.slug === slug);
-  }
-} catch (err) {
-  console.error("Failed to load posts and increment views in SSR:", err);
+  slug = decodeURIComponent(rawSlug).replace(/\/+$/, "").trim();
+} catch (_) {
+  slug = rawSlug.replace(/\/+$/, "").trim();
 }
 
+let post = null;
+let allPosts: any[] = [];
+let fetchFailed = false;
+
+// Robust fetch with retry and timeout to prevent false 404s from Google Apps Script cold starts/delays
+async function fetchPostData(targetSlug: string) {
+  const maxAttempts = 3;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout per attempt
+    try {
+      const apiRes = await fetch(
+        `${BLOG_CONFIG.scriptUrl}?action=get_posts&slug=${encodeURIComponent(targetSlug)}&_t=${Date.now()}`,
+        { signal: controller.signal }
+      );
+      clearTimeout(timeoutId);
+      if (!apiRes.ok) {
+        throw new Error(`HTTP error ${apiRes.status}`);
+      }
+      const result = await apiRes.json();
+      if (result && result.success && Array.isArray(result.data)) {
+        const posts = result.data;
+        const targetLower = targetSlug.toLowerCase();
+        
+        // Match exact slug (case-insensitive & trimmed)
+        let matched = posts.find((p: any) => p && p.slug && p.slug.trim().toLowerCase() === targetLower);
+        
+        // Fallback: match by ID suffix if available (e.g. -id_b9 matching id_b9b184e48587)
+        if (!matched) {
+          const idMatch = targetSlug.match(/id_[a-z0-9]+/i);
+          if (idMatch) {
+            const idPart = idMatch[0].toLowerCase();
+            matched = posts.find((p: any) => 
+              (p && p.id && p.id.toLowerCase().includes(idPart)) ||
+              (p && p.slug && p.slug.toLowerCase().includes(idPart))
+            );
+          }
+        }
+
+        if (matched) {
+          return { post: matched, allPosts: posts, fetchSuccess: true };
+        }
+
+        // If post list was returned but new post isn't visible yet (Google Sheets replication delay)
+        if (attempt < maxAttempts) {
+          await new Promise((r) => setTimeout(r, 600));
+          continue;
+        }
+
+        return { post: null, allPosts: posts, fetchSuccess: true };
+      }
+    } catch (err: any) {
+      clearTimeout(timeoutId);
+      console.warn(`[SSR Blog] Attempt ${attempt} failed to load post '${targetSlug}':`, err.message || err);
+      if (attempt < maxAttempts) {
+        await new Promise((r) => setTimeout(r, 500 * attempt));
+      }
+    }
+  }
+  return { post: null, allPosts: [], fetchSuccess: false };
+}
+
+const fetchResult = await fetchPostData(slug);
+post = fetchResult.post;
+allPosts = fetchResult.allPosts;
+fetchFailed = !fetchResult.fetchSuccess;
+
 if (!post) {
+  if (fetchFailed) {
+    console.error(`[SSR Blog] Could not retrieve post '${slug}' due to backend fetch failure after retries.`);
+  }
   return Astro.redirect("/404");
 }
 

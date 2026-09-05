@@ -107,8 +107,8 @@ import BlogLayout from '../../layouts/BlogLayout.astro';
           submitBtn.querySelector('span').innerText = 'Terbitkan Postingan';
 
           if (res.success) {
-            showToast('success', 'Postingan Diterbitkan!');
-            setTimeout(() => { window.location.href = `/blog/post/${res.data.slug}`; }, 1500);
+            showToast('success', 'Postingan Berhasil Diterbitkan!', 'Mengarahkan ke halaman artikel...');
+            setTimeout(() => { window.location.href = `/blog/post/${res.data.slug}`; }, 2500);
           } else { 
             showToast('error', 'Gagal menerbitkan', res.message); 
           }

@@ -143,10 +143,10 @@ import BlogLayout from '../../layouts/BlogLayout.astro';
 
           const updateRes = await API.updatePost(postData);
           if (updateRes.success) {
-            showToast('success', 'Post Updated!');
+            showToast('success', 'Postingan Berhasil Diperbarui!', 'Mengarahkan ke halaman artikel...');
             setTimeout(() => {
               window.location.href = `/blog/post/${updateRes.data.slug}`;
-            }, 1500);
+            }, 2500);
           } else {
             showToast('error', 'Update Failed', updateRes.message);
           }
